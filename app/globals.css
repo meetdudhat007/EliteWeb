@@ -1,46 +1,67 @@
 @import "tailwindcss";
 
-/* Design Tokens & CSS Custom Properties (Neutral Temporary Foundation) */
-:root {
-  --background: #ffffff;
-  --background-secondary: #f9fafb;
-  --background-elevated: #f3f4f6;
-  --foreground: #09090b;
-  --foreground-secondary: #52525b;
-  --muted: #71717a;
-  --border: #e4e4e7;
-  --border-strong: #d4d4d8;
-  --accent: #18181b;
-  --accent-foreground: #fafafa;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
-}
+/* ==========================================================================
+   TEMPORARY DESIGN SYSTEM & VISUAL ART DIRECTION
+   ==========================================================================
+   All color, typography, spacing, and border tokens are defined here as CSS
+   custom properties. When permanent branding is finalized, update these values
+   centrally without altering component structures.
+   ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #09090b;
-    --background-secondary: #111113;
-    --background-elevated: #18181b;
-    --foreground: #f4f4f5;
-    --foreground-secondary: #a1a1aa;
-    --muted: #71717a;
-    --border: #27272a;
-    --border-strong: #3f3f46;
-    --accent: #fafafa;
-    --accent-foreground: #09090b;
-  }
+:root {
+  /* Near-Black / Charcoal Visual Art Direction */
+  --bg-base: #090a0d;
+  --bg-surface: #101216;
+  --bg-elevated: #16181f;
+  --bg-highlight: #1e2129;
+
+  /* Off-White & Restrained Gray Typography */
+  --text-primary: #f4f4f6;
+  --text-secondary: #9496a1;
+  --text-muted: #5b5e6b;
+
+  /* Controlled Monochrome Accent */
+  --accent-primary: #ffffff;
+  --accent-secondary: #272a33;
+  --accent-highlight: rgba(255, 255, 255, 0.08);
+
+  /* Hairline Borders */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Geometry & Radii */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-pill: 9999px;
+
+  /* Fluid Editorial Typography Clamps */
+  --font-hero: clamp(2.75rem, 6.5vw + 1rem, 6rem);
+  --font-section-heading: clamp(2rem, 4vw + 0.5rem, 3.75rem);
+  --font-editorial-body: clamp(1.125rem, 1.25vw + 0.25rem, 1.375rem);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-highlight: var(--bg-highlight);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Global Reset & Base Resets */
+/* Base Resets & Global Behavior */
 *,
 *::before,
 *::after {
@@ -50,11 +71,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  overflow-x: hidden;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   min-height: 100vh;
   margin: 0;
@@ -62,16 +86,29 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Base typography helpers */
+/* Editorial Typography Baseline */
 h1, h2, h3, h4, h5, h6 {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
   font-weight: 600;
+  line-height: 1.08;
 }
 
-/* Focus outline for accessibility */
+p {
+  line-height: 1.65;
+}
+
+/* Accessibility Focus Outline */
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+/* Subtle selection styling */
+::selection {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
 }

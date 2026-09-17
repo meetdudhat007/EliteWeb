@@ -1,43 +1,56 @@
 import React from "react";
 import { siteConfig } from "@/lib/constants/site";
+import { BrandMark } from "@/components/ui/BrandMark";
+import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
 
 export function Navigation() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <a
-          href="#hero"
-          className="flex items-center gap-2 text-sm font-semibold tracking-wider text-zinc-900 transition-colors hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300"
-        >
-          <span>{siteConfig.name}</span>
-          {siteConfig.isPrototype && (
-            <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-widest text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
-              Demo
-            </span>
-          )}
-        </a>
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.07] bg-[#090a0d]/85 backdrop-blur-xl transition-colors">
+      <Container size="wide">
+        <div className="flex h-20 items-center justify-between">
+          {/* Temporary Brand Mark */}
+          <BrandMark />
 
-        <nav aria-label="Main Navigation" className="hidden md:flex md:items-center md:gap-8">
-          {siteConfig.navigation.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-xs font-medium uppercase tracking-wider text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <a
-            href="#contact"
-            className="rounded-full border border-zinc-900 bg-zinc-900 px-4 py-2 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:bg-zinc-800 dark:border-white dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+          {/* Editorial Desktop Navigation Links */}
+          <nav
+            aria-label="Main Navigation"
+            className="hidden items-center gap-10 md:flex"
           >
-            Get In Touch
-          </a>
+            {siteConfig.navigation.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-150 hover:text-white"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop Primary CTA & Mobile Menu Trigger Placeholder */}
+          <div className="flex items-center gap-3">
+            <Button
+              href="#contact"
+              variant="primary"
+              size="sm"
+              className="tracking-[0.16em]"
+            >
+              Let&apos;s Talk
+            </Button>
+
+            {/* Mobile Menu Trigger (Prepared for Animated Fullscreen Menu in Phase 4) */}
+            <button
+              type="button"
+              className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-[2px] border border-white/10 bg-white/[0.03] text-zinc-300 md:hidden hover:text-white"
+              aria-label="Toggle Menu"
+            >
+              <span className="h-[1px] w-4 bg-current" />
+              <span className="h-[1px] w-4 bg-current" />
+            </button>
+          </div>
         </div>
-      </div>
+      </Container>
     </header>
   );
 }

@@ -47,6 +47,7 @@ export interface TeamMember {
 
 export interface ContactConfig {
   readonly ctaHeading: string;
+  readonly ctaAccent: string;
   readonly ctaDescription: string;
   readonly email: string;
   readonly location: string;
@@ -95,8 +96,8 @@ export const siteConfig: SiteConfig = {
   navigation: [
     { label: "Overview", href: "#hero" },
     { label: "Services", href: "#services" },
-    { label: "Selected Work", href: "#work" },
-    { label: "Engineering Process", href: "#process" },
+    { label: "Work", href: "#work" },
+    { label: "Process", href: "#process" },
     { label: "Team", href: "#team" },
     { label: "Contact", href: "#contact" },
   ],
@@ -173,21 +174,39 @@ export const siteConfig: SiteConfig = {
   process: [
     {
       step: "01",
-      title: "Architecture & Discovery",
+      title: "Discover",
       description:
-        "We analyze the core technical requirements, define data models, and establish clean system boundaries before writing code.",
+        "Technical audits, data requirements mapping, and operational constraint identification to establish project fundamentals.",
     },
     {
       step: "02",
-      title: "Iterative Engineering",
+      title: "Define",
       description:
-        "Continuous delivery of testable, modular milestones with clean component architecture and rigorous type safety.",
+        "Formalizing system boundaries, architectural blueprints, database schemas, and service contract specifications.",
     },
     {
       step: "03",
-      title: "Verification & Delivery",
+      title: "Design",
       description:
-        "Thorough cross-device validation, performance optimization, and structured deployment readiness.",
+        "Synthesizing user workflow diagrams, design system tokens, interface layouts, and ergonomic interaction models.",
+    },
+    {
+      step: "04",
+      title: "Build",
+      description:
+        "Modular full-stack engineering with strict type safety, clean abstractions, and continuous milestone verification.",
+    },
+    {
+      step: "05",
+      title: "Test",
+      description:
+        "Rigorous cross-device validation, end-to-end load testing, failure mode resilience checks, and edge-case auditing.",
+    },
+    {
+      step: "06",
+      title: "Deploy",
+      description:
+        "Automated deployment infrastructure, zero-downtime provisioning, logging observability, and operational handover.",
     },
   ],
   team: [
@@ -217,7 +236,8 @@ export const siteConfig: SiteConfig = {
     },
   ],
   contact: {
-    ctaHeading: "Software Built Around Your Business",
+    ctaHeading: "Have a complex problem?",
+    ctaAccent: "Let's build it.",
     ctaDescription:
       "We partner with ambitious teams to plan, architect, and deliver reliable custom software solutions.",
     email: "hello@nexora-demo.com",
