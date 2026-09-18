@@ -1,12 +1,271 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { siteConfig } from "@/lib/constants/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { HeroVisual } from "@/components/3d/HeroVisual";
+import { useGSAPAnimation } from "@/hooks/useGSAPAnimation";
+import { gsap } from "@/lib/animations/gsap";
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const visualBoxRef = useRef<HTMLDivElement>(null);
+
+  useGSAPAnimation(
+    (ctx, prefersReduced) => {
+      // 1. Accessibility: When reduced motion is preferred, keep static presentation
+      if (prefersReduced) {
+        return;
+      }
+
+      // 2. Master Coordinated Entrance Timeline
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+      });
+
+      // Phase B: Technical Header Strip
+      tl.from(
+        "[data-hero='top-strip']",
+        {
+          opacity: 0,
+          y: -12,
+          duration: 0.6,
+        },
+        0.05
+      );
+
+      // Phase C: Headline Lines Staggered Vertical Reveal
+      tl.from(
+        "[data-hero='headline-line']",
+        {
+          opacity: 0,
+          y: 32,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: "power3.out",
+        },
+        0.18
+      );
+
+      // Phase F1: Hero Visual Outer Frame & Ambient Glow
+      tl.from(
+        "[data-hero='visual'] [data-visual='frame']",
+        {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.9,
+          ease: "power2.out",
+        },
+        0.28
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='ambient']",
+        {
+          opacity: 0,
+          scale: 0.85,
+          duration: 1.1,
+          ease: "power2.out",
+        },
+        0.32
+      );
+
+      // Phase F2: Internal Technical SVG Online Activation
+      tl.from(
+        "[data-hero='visual'] [data-visual='grid']",
+        {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out",
+        },
+        0.48
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='axes'] line",
+        {
+          opacity: 0,
+          scaleX: 0.2,
+          scaleY: 0.2,
+          transformOrigin: "center center",
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power2.out",
+        },
+        0.52
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='rings'] ellipse",
+        {
+          opacity: 0,
+          scale: 0.7,
+          transformOrigin: "center center",
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power2.out",
+        },
+        0.6
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='calibration'] circle",
+        {
+          opacity: 0,
+          scale: 0.85,
+          transformOrigin: "center center",
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        0.7
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='core']",
+        {
+          opacity: 0,
+          scale: 0.75,
+          transformOrigin: "center center",
+          duration: 0.8,
+          ease: "back.out(1.35)",
+        },
+        0.76
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='satellites'] *",
+        {
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.04,
+          ease: "power1.out",
+        },
+        0.9
+      );
+
+      tl.from(
+        "[data-hero='visual'] [data-visual='status']",
+        {
+          opacity: 0,
+          y: 6,
+          duration: 0.45,
+          ease: "power2.out",
+        },
+        1.0
+      );
+
+      // Phase D: Supporting Paragraph & CTA Actions
+      tl.from(
+        "[data-hero='description']",
+        {
+          opacity: 0,
+          y: 18,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        0.62
+      );
+
+      tl.from(
+        "[data-hero='actions'] > *",
+        {
+          opacity: 0,
+          y: 14,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+        },
+        0.82
+      );
+
+      // Phase E: Technical Sub-annotation
+      tl.from(
+        "[data-hero='annotation']",
+        {
+          opacity: 0,
+          y: 10,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        0.98
+      );
+
+      // Phase G: Bottom Technical Metadata Matrix
+      tl.from(
+        "[data-hero='metadata-col']",
+        {
+          opacity: 0,
+          y: 16,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        1.12
+      );
+
+      // 3. Desktop Pointer Parallax on HeroVisual (Desktop / Fine Pointer Only)
+      const heroEl = heroRef.current;
+      const visualBox = visualBoxRef.current;
+
+      if (
+        heroEl &&
+        visualBox &&
+        typeof window !== "undefined" &&
+        window.matchMedia("(pointer: fine)").matches
+      ) {
+        const xTo = gsap.quickTo(visualBox, "x", {
+          duration: 0.7,
+          ease: "power2.out",
+        });
+        const yTo = gsap.quickTo(visualBox, "y", {
+          duration: 0.7,
+          ease: "power2.out",
+        });
+        const rotXTo = gsap.quickTo(visualBox, "rotationX", {
+          duration: 0.9,
+          ease: "power2.out",
+        });
+        const rotYTo = gsap.quickTo(visualBox, "rotationY", {
+          duration: 0.9,
+          ease: "power2.out",
+        });
+
+        const handleMouseMove = (e: MouseEvent) => {
+          const rect = heroEl.getBoundingClientRect();
+          const relX = (e.clientX - rect.left) / rect.width - 0.5;
+          const relY = (e.clientY - rect.top) / rect.height - 0.5;
+
+          // Maximum 20px displacement and 4deg tilt
+          xTo(relX * 24);
+          yTo(relY * 24);
+          rotXTo(-relY * 5);
+          rotYTo(relX * 5);
+        };
+
+        const handleMouseLeave = () => {
+          xTo(0);
+          yTo(0);
+          rotXTo(0);
+          rotYTo(0);
+        };
+
+        heroEl.addEventListener("mousemove", handleMouseMove, { passive: true });
+        heroEl.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+
+        return () => {
+          heroEl.removeEventListener("mousemove", handleMouseMove);
+          heroEl.removeEventListener("mouseleave", handleMouseLeave);
+        };
+      }
+    },
+    { scopeRef: heroRef }
+  );
+
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative flex min-h-[92vh] flex-col justify-center border-b border-white/[0.07] py-16 sm:py-24 lg:py-28 overflow-hidden"
     >
@@ -15,7 +274,10 @@ export function Hero() {
 
       <Container size="wide">
         {/* Top Technical Header Strip */}
-        <div className="mb-12 flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.07] pb-6">
+        <div
+          data-hero="top-strip"
+          className="mb-12 flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.07] pb-6"
+        >
           <div className="flex items-center gap-3">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-400">
               [ 01 // STUDIO OVERVIEW ]
@@ -39,17 +301,34 @@ export function Hero() {
           {/* Left Column: Monumental Headline & Narrative */}
           <div className="lg:col-span-7">
             <h1 className="text-4xl font-semibold tracking-[-0.038em] text-white sm:text-6xl md:text-7xl lg:text-[5.4rem] lg:leading-[0.98]">
-              Software Built <br className="hidden sm:inline" />
-              Around Your <br className="hidden sm:inline" />
-              <span className="text-zinc-200">Business.</span>
+              <span data-hero="headline-line" className="inline-block">
+                Software Built
+              </span>{" "}
+              <br className="hidden sm:inline" />
+              <span data-hero="headline-line" className="inline-block">
+                Around Your
+              </span>{" "}
+              <br className="hidden sm:inline" />
+              <span
+                data-hero="headline-line"
+                className="inline-block text-zinc-200"
+              >
+                Business.
+              </span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-base font-normal leading-relaxed text-zinc-400 sm:text-lg">
+            <p
+              data-hero="description"
+              className="mt-8 max-w-xl text-base font-normal leading-relaxed text-zinc-400 sm:text-lg"
+            >
               {siteConfig.description}
             </p>
 
             {/* CTAs */}
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div
+              data-hero="actions"
+              className="mt-10 flex flex-wrap items-center gap-4"
+            >
               <Button
                 href="#work"
                 variant="primary"
@@ -69,21 +348,29 @@ export function Hero() {
             </div>
 
             {/* Technical Sub-annotation */}
-            <div className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            <div
+              data-hero="annotation"
+              className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500"
+            >
               <span className="h-1 w-1 rounded-full bg-zinc-400" />
-              <span>Tailored engineering architecture · Zero template compromises</span>
+              <span>
+                Tailored engineering architecture · Zero template compromises
+              </span>
             </div>
           </div>
 
           {/* Right Column: Isolated Visual Centerpiece */}
-          <div className="flex items-center justify-center lg:col-span-5">
-            <HeroVisual />
+          <div
+            data-hero="visual"
+            className="flex items-center justify-center lg:col-span-5"
+          >
+            <HeroVisual ref={visualBoxRef} />
           </div>
         </div>
 
         {/* Bottom Technical Metadata Matrix */}
         <div className="mt-20 grid grid-cols-2 gap-6 border-t border-white/[0.07] pt-8 md:grid-cols-4">
-          <div>
+          <div data-hero="metadata-col">
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
               01 // Discipline
             </span>
@@ -91,7 +378,7 @@ export function Hero() {
               Custom Engineering
             </p>
           </div>
-          <div>
+          <div data-hero="metadata-col">
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
               02 // Focus
             </span>
@@ -99,7 +386,7 @@ export function Hero() {
               Business Systems & Portals
             </p>
           </div>
-          <div>
+          <div data-hero="metadata-col">
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
               03 // Execution
             </span>
@@ -107,7 +394,7 @@ export function Hero() {
               Full Lifecycle Ownership
             </p>
           </div>
-          <div>
+          <div data-hero="metadata-col">
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
               04 // Structure
             </span>
