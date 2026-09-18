@@ -53,6 +53,17 @@ export const animationTokens = {
     // Editorial scrub for Statement section (1s inertia = smooth, deliberate scroll feel)
     scrubStatement: 1,
   },
+
+  work: {
+    // Pinned scroll distance for desktop Work showcase (~80vh per project for 3 projects)
+    pinnedScrollDistance: "+=240%",
+    // Heavier scrub inertia for deliberate, cinematic feel during project transitions
+    scrub: 0.8,
+    // Proportional transition duration between project slides
+    projectTransitionDuration: 0.35,
+    // Proportional hold duration on each project
+    projectHoldDuration: 0.28,
+  },
 } as const;
 
 export type AnimationTokens = typeof animationTokens;
