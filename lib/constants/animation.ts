@@ -38,6 +38,19 @@ export const animationTokens = {
     standard: 0.08,
     relaxed: 0.15,
   },
+
+  scrollTriggerDefaults: {
+    // Standard entrance trigger positions
+    entranceStart: "top 85%",
+    entranceEnd: "bottom 20%",
+    // Pinned section scrub positions
+    pinnedStart: "top top",
+    pinnedEnd: "+=150%",
+    // Standard toggle actions (play when entering, reverse when scrolling back up past start)
+    toggleActions: "play none none reverse",
+    // Standard scrub inertia (in seconds)
+    scrub: 0.6,
+  },
 } as const;
 
 export type AnimationTokens = typeof animationTokens;
