@@ -1,10 +1,69 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { siteConfig } from "@/lib/constants/site";
 import { Container } from "@/components/ui/Container";
+import { gsap } from "@/lib/animations/gsap";
+import { useGSAPAnimation } from "@/hooks/useGSAPAnimation";
 
 export function Services() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAPAnimation(
+    (_ctx, prefersReduced) => {
+      if (prefersReduced) return;
+
+      /*
+       * Single section-level timeline.
+       * Section header establishes first, then service rows stagger in below it.
+       * toggleActions: "play none none none" — content settles permanently.
+       * Prevents jarring re-animation when user scrolls back past the section.
+       */
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Section label
+      tl.from("[data-services='label']", {
+        opacity: 0,
+        y: 16,
+        duration: 0.6,
+      }, 0);
+
+      // Section heading — slight delay so label lands first
+      tl.from("[data-services='heading']", {
+        opacity: 0,
+        y: 28,
+        duration: 0.85,
+      }, 0.08);
+
+      // Right-side meta text
+      tl.from("[data-services='meta']", {
+        opacity: 0,
+        y: 16,
+        duration: 0.65,
+      }, 0.18);
+
+      // Service rows stagger in — each row is its own visual entity
+      tl.from("[data-services='item']", {
+        opacity: 0,
+        y: 36,
+        stagger: 0.14,
+        duration: 0.85,
+        ease: "power2.out",
+      }, 0.28);
+    },
+    { scopeRef: sectionRef }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="services"
       className="relative border-b border-white/[0.07] py-32 sm:py-40 lg:py-48"
     >
@@ -12,28 +71,36 @@ export function Services() {
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 border-b border-white/[0.07] pb-16 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">
+            <span
+              data-services="label"
+              className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400"
+            >
               [ 03 // CORE CAPABILITIES ]
             </span>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
+            <h2
+              data-services="heading"
+              className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl"
+            >
               Specialized engineering for complex requirements.
             </h2>
           </div>
-          <div className="max-w-xs text-right">
+          <div data-services="meta" className="max-w-xs text-right">
             <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-400">
               DOMAINS // 03 CORE PRACTICES
             </p>
             <p className="mt-1 text-xs text-zinc-400">
-              Bespoke architecture, scalable systems & modern digital products.
+              Bespoke architecture, scalable systems &amp; modern digital
+              products.
             </p>
           </div>
         </div>
 
-        {/* Monolithic Service Domains (Interaction & Pinned-Scroll Ready) */}
+        {/* Monolithic Service Domains */}
         <div className="divide-y divide-white/[0.07]">
           {siteConfig.services.map((service, index) => (
             <div
               key={service.id}
+              data-services="item"
               data-service-index={index + 1}
               className="group grid grid-cols-1 gap-8 py-16 transition-colors lg:grid-cols-12 lg:gap-12 lg:py-24"
             >
@@ -59,7 +126,7 @@ export function Services() {
                 </div>
 
                 <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-zinc-400">
-                  Full lifecycle development & maintenance
+                  Full lifecycle development &amp; maintenance
                 </div>
               </div>
 

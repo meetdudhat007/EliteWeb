@@ -47,9 +47,11 @@ export const animationTokens = {
     pinnedStart: "top top",
     pinnedEnd: "+=150%",
     // Standard toggle actions (play when entering, reverse when scrolling back up past start)
-    toggleActions: "play none none reverse",
+    toggleActions: "play none none none",
     // Standard scrub inertia (in seconds)
     scrub: 0.6,
+    // Editorial scrub for Statement section (1s inertia = smooth, deliberate scroll feel)
+    scrubStatement: 1,
   },
 } as const;
 

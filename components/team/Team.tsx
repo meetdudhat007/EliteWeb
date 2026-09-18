@@ -1,10 +1,80 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { siteConfig } from "@/lib/constants/site";
 import { Container } from "@/components/ui/Container";
+import { gsap } from "@/lib/animations/gsap";
+import { useGSAPAnimation } from "@/hooks/useGSAPAnimation";
 
 export function Team() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAPAnimation(
+    (_ctx, prefersReduced) => {
+      if (prefersReduced) return;
+
+      /*
+       * Restrained, calm reveal — intentional decompression after the more
+       * technical Work and Process sections.
+       *
+       * Header settles first. Member cards stagger in with a modest y offset.
+       * Portrait placeholders also scale gently — subtler than card movement.
+       * No parallax, no complex scrubbing. Simply: calm, human arrival.
+       */
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 82%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Section label
+      tl.from("[data-team='header-label']", {
+        opacity: 0,
+        y: 14,
+        duration: 0.6,
+      }, 0);
+
+      // Section heading
+      tl.from("[data-team='heading']", {
+        opacity: 0,
+        y: 20,
+        duration: 0.75,
+        ease: "power3.out",
+      }, 0.08);
+
+      // Demo roster badge
+      tl.from("[data-team='header-badge']", {
+        opacity: 0,
+        y: 12,
+        duration: 0.55,
+      }, 0.18);
+
+      // Portrait placeholder — scale from slightly smaller; calm, not dramatic
+      tl.from("[data-team='portrait']", {
+        opacity: 0,
+        scale: 0.96,
+        transformOrigin: "center top",
+        stagger: 0.1,
+        duration: 0.8,
+      }, 0.26);
+
+      // Member cards — y stagger, follows portraits
+      tl.from("[data-team='member']", {
+        opacity: 0,
+        y: 28,
+        stagger: 0.1,
+        duration: 0.8,
+      }, 0.26);
+    },
+    { scopeRef: sectionRef }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="team"
       className="relative border-b border-white/[0.07] py-32 sm:py-40 lg:py-48"
     >
@@ -12,14 +82,23 @@ export function Team() {
         {/* Header */}
         <div className="flex flex-col justify-between gap-6 border-b border-white/[0.07] pb-16 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">
+            <span
+              data-team="header-label"
+              className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400"
+            >
               [ 06 // CORE ENGINEERING TEAM ]
             </span>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
+            <h2
+              data-team="heading"
+              className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl"
+            >
               Small, focused, senior-led.
             </h2>
           </div>
-          <div className="rounded-[2px] border border-white/10 bg-white/[0.02] px-3.5 py-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400">
+          <div
+            data-team="header-badge"
+            className="rounded-[2px] border border-white/10 bg-white/[0.02] px-3.5 py-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400"
+          >
             Internal Demo Roster · 4–5 Members
           </div>
         </div>
@@ -32,6 +111,7 @@ export function Team() {
             return (
               <div
                 key={member.id}
+                data-team="member"
                 className={`group flex flex-col justify-between rounded-[4px] border border-white/[0.08] bg-[#0d0f14]/60 p-6 transition-all hover:border-white/20 ${
                   isStaggered ? "lg:translate-y-10" : ""
                 }`}
@@ -39,6 +119,7 @@ export function Team() {
                 <div>
                   {/* Geometric Abstract Portrait Placeholder */}
                   <div
+                    data-team="portrait"
                     className={`relative mb-6 w-full overflow-hidden rounded-[2px] border border-white/10 bg-[#12151d] select-none ${
                       isStaggered ? "aspect-[3/4]" : "aspect-[4/5]"
                     }`}
@@ -60,13 +141,23 @@ export function Team() {
                       </div>
 
                       <div className="flex flex-col items-center justify-center my-auto opacity-30 group-hover:opacity-60 transition-opacity">
-                        <svg viewBox="0 0 80 80" className="w-16 h-16 text-white" fill="none">
+                        <svg
+                          viewBox="0 0 80 80"
+                          className="w-16 h-16 text-white"
+                          fill="none"
+                        >
                           <polygon
                             points="40,10 70,30 70,60 40,75 10,60 10,30"
                             stroke="currentColor"
                             strokeWidth="1"
                           />
-                          <circle cx="40" cy="42" r="12" stroke="currentColor" strokeWidth="1" />
+                          <circle
+                            cx="40"
+                            cy="42"
+                            r="12"
+                            stroke="currentColor"
+                            strokeWidth="1"
+                          />
                         </svg>
                         <span className="mt-2 font-mono text-[8px] uppercase tracking-widest text-zinc-500">
                           Placeholder Portrait
