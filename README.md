@@ -1,9 +1,9 @@
-# NEXORA — Portfolio & Agency Prototype
+# ZAPSTACK — Website
 
-A modern, highly animated portfolio/agency website prototype for a specialized software development team.
+A modern, highly animated website for ZAPSTACK — a specialized software development team.
 
 > **Important Notice:**
-> This repository currently contains an internal prototype/sample website. All branding names, project case studies, client representations, and team member profiles are temporary demonstration values. They are centralized in `lib/constants/site.ts` to allow straightforward replacement once permanent branding and company decisions are finalized.
+> This repository is an active development build. Project case studies, team member profiles, and some contact information are modular placeholder values centralized in `lib/constants/site.ts`. They will be updated with finalized content without requiring structural changes.
 
 ## Tech Stack
 
@@ -33,8 +33,10 @@ components/
   3d/                  # 3D/WebGL canvas containers (future phases)
 
 lib/
-  constants/site.ts    # Single source of truth for all demo content & types
-  animations/          # Future GSAP / Motion timeline utilities
+  constants/site.ts    # Single source of truth for brand identity, content & types
+  constants/theme.ts   # ZAPSTACK design token constants
+  constants/animation.ts # GSAP animation tokens
+  animations/          # GSAP / ScrollTrigger animation infrastructure
   utils/cn.ts          # Class composition utility
 
 hooks/                 # Custom React hooks

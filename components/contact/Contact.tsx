@@ -94,8 +94,8 @@ export function Contact() {
       id="contact"
       className="relative bg-[#060709] pt-32 sm:pt-40 lg:pt-48 overflow-hidden"
     >
-      {/* Subtle Ambient Glow */}
-      <div className="absolute top-0 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.025)_0%,transparent_70%)] pointer-events-none" />
+      {/* Subtle Ambient Glow — ZAPSTACK gold-tinted */}
+      <div className="absolute top-0 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(224,160,48,0.04)_0%,transparent_70%)] pointer-events-none" />
 
       <Container size="wide">
         {/* The Big Conclusion: Massive Typographic Lockup */}

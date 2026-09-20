@@ -9,7 +9,7 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full border-b border-white/[0.07] bg-[#090a0d]/85 backdrop-blur-xl transition-colors">
       <Container size="wide">
         <div className="flex h-20 items-center justify-between">
-          {/* Temporary Brand Mark */}
+          {/* ZAPSTACK Brand Mark */}
           <BrandMark />
 
           {/* Editorial Desktop Navigation Links */}

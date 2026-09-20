@@ -1,11 +1,11 @@
 /**
- * Centralized Demo Site Configuration
- * 
+ * ZAPSTACK — Centralized Site Configuration
+ *
  * IMPORTANT ARCHITECTURAL NOTE:
- * All business, branding, team, and project values defined here are DEMO/PROTOTYPE values.
- * They are centralized in this single file so the team can replace them when permanent
- * branding and content are decided, without modifying component code.
- * 
+ * Brand identity (name, colors, metadata) is centralized here.
+ * Team, project, and contact values remain as modular placeholders until finalized.
+ * Updating this file propagates changes to all components without touching component code.
+ *
  * ZERO-FABRICATION POLICY:
  * Do not add fake client names, fake statistics, fake testimonials, or fake credentials.
  */
@@ -58,6 +58,16 @@ export interface ContactConfig {
 export interface SiteConfig {
   readonly isPrototype: boolean;
   readonly name: string;
+  readonly brand: {
+    readonly deepBlack: string;
+    readonly black: string;
+    readonly gold: string;
+    readonly goldBright: string;
+    readonly white: string;
+    readonly softWhite: string;
+    readonly goldGradientLight: string;
+    readonly goldGradientDark: string;
+  };
   readonly tagline: string;
   readonly positioning: string;
   readonly description: string;
@@ -77,13 +87,23 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   isPrototype: true,
-  name: "NEXORA",
+  name: "ZAPSTACK",
+  brand: {
+    deepBlack: "#202020",
+    black: "#000000",
+    gold: "#E0A030",
+    goldBright: "#E8A838",
+    white: "#FFFFFF",
+    softWhite: "#F5F5F5",
+    goldGradientLight: "#F2B544",
+    goldGradientDark: "#D89420",
+  },
   tagline: "Software Built Around Your Business",
   positioning: "India · Working Globally",
   description:
     "We design and build custom digital products, business systems and intelligent software.",
   metadata: {
-    title: "NEXORA — Software Built Around Your Business",
+    title: "ZAPSTACK — Software Built Around Your Business",
     description:
       "Design and engineering team building custom digital products, business systems, and intelligent software.",
     keywords: [
@@ -240,7 +260,7 @@ export const siteConfig: SiteConfig = {
     ctaAccent: "Let's build it.",
     ctaDescription:
       "We partner with ambitious teams to plan, architect, and deliver reliable custom software solutions.",
-    email: "hello@nexora-demo.com",
+    email: "hello@zapstack.dev",
     location: "India · Working Globally",
     workingHours: "Mon – Fri · IST & Global Overlap",
     isDemoNotice:

@@ -18,7 +18,8 @@ export function BrandMark({ className, showBadge = true }: BrandMarkProps) {
       aria-label={`${siteConfig.name} - Home`}
     >
       <div className="flex items-center gap-2">
-        <span className="h-2 w-2 rounded-[1px] bg-white/90 transition-transform duration-300 group-hover:scale-110" />
+        {/* Brand mark square — ZAPSTACK Luxury Gold accent */}
+        <span className="h-2 w-2 rounded-[1px] bg-[#E0A030] transition-transform duration-300 group-hover:scale-110" />
         <span className="font-mono text-sm font-semibold tracking-[0.22em] text-white">
           {siteConfig.name}
         </span>

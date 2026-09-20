@@ -109,7 +109,7 @@ export const HeroVisual = forwardRef<HTMLDivElement, HeroVisualProps>(
                   cy="200"
                   rx="150"
                   ry="75"
-                  stroke="rgba(255,255,255,0.18)"
+                  stroke="rgba(224,160,48,0.20)"
                   strokeWidth="1.2"
                   transform="rotate(-25 200 200)"
                 />
@@ -187,8 +187,8 @@ export const HeroVisual = forwardRef<HTMLDivElement, HeroVisualProps>(
                   strokeWidth="1.5"
                   fill="rgba(255,255,255,0.02)"
                 />
-                {/* Core Node */}
-                <circle cx="0" cy="0" r="3" fill="#ffffff" />
+                                {/* Core Node — ZAPSTACK gold focal point */}
+                <circle cx="0" cy="0" r="3" fill="#E0A030" />
               </g>
 
               {/* Orbital Satellite Data Points */}
@@ -242,9 +242,9 @@ export const HeroVisual = forwardRef<HTMLDivElement, HeroVisualProps>(
             data-visual="status"
             className="mt-2 flex items-center justify-between border-t border-white/[0.08] pt-3 font-mono text-[9px] uppercase tracking-widest text-zinc-500"
           >
-            <span>SPEC {"//"} 3D_CANVAS_READY</span>
+            <span>SPEC {"//"} ARCH_SYSTEM_ACTIVE</span>
             <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80 animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#E0A030]/80 animate-pulse" />
               <span>CORE_ACTIVE</span>
             </span>
           </div>

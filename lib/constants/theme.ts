@@ -1,10 +1,11 @@
 /**
- * Centralized Design System Tokens
- * 
+ * ZAPSTACK Design System Tokens
+ *
  * ARCHITECTURAL PURPOSE:
- * These tokens define the temporary visual art direction for the prototype.
- * When permanent brand identity (colors, fonts, radii) is decided, update values here
- * and in `app/globals.css` without altering component code.
+ * These tokens define the visual identity for ZAPSTACK.
+ * The dark cinematic foundation is preserved from the prototype phase.
+ * ZAPSTACK brand colors are added as the `brand` sub-object.
+ * Update values here and in `app/globals.css` to propagate changes without touching component code.
  */
 
 export const themeTokens = {
@@ -49,6 +50,29 @@ export const themeTokens = {
     md: "4px",
     lg: "8px",
     full: "9999px",
+  },
+
+  /**
+   * ZAPSTACK Approved Brand Palette
+   * Source of truth for all brand color usage.
+   * CSS equivalents are exposed via --brand-* custom properties in globals.css.
+   */
+  brand: {
+    // Dark foundation surfaces
+    deepBlack: "#202020",
+    black: "#000000",
+
+    // ZAPSTACK gold — use selectively for identity, highlights, active states
+    gold: "#E0A030",        // Luxury Gold — primary brand accent
+    goldBright: "#E8A838", // Bright Gold — hover, interactive emphasis
+
+    // Light values
+    white: "#FFFFFF",
+    softWhite: "#F5F5F5",
+
+    // Gold gradient — for controlled brand visual treatments only
+    goldGradientLight: "#F2B544",
+    goldGradientDark: "#D89420",
   },
 } as const;
 
