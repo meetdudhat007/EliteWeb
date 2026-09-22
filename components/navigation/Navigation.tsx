@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 
 export function Navigation() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.07] bg-[#090a0d]/85 backdrop-blur-xl transition-colors">
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/90 backdrop-blur-xl transition-colors">
       <Container size="wide">
         <div className="flex h-20 items-center justify-between">
           {/* ZAPSTACK Brand Mark */}
@@ -21,7 +21,7 @@ export function Navigation() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-150 hover:text-white"
+                className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500 transition-colors duration-150 hover:text-[#202020]"
               >
                 {item.label}
               </a>
@@ -39,10 +39,10 @@ export function Navigation() {
               Let&apos;s Talk
             </Button>
 
-            {/* Mobile Menu Trigger (Prepared for Animated Fullscreen Menu in Phase 4) */}
+            {/* Mobile Menu Trigger (Prepared for Animated Fullscreen Menu) */}
             <button
               type="button"
-              className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-[2px] border border-white/10 bg-white/[0.03] text-zinc-300 md:hidden hover:text-white"
+              className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-[2px] border border-zinc-300 bg-zinc-100 text-zinc-600 md:hidden hover:text-[#202020] hover:border-zinc-400 transition-colors"
               aria-label="Toggle Menu"
             >
               <span className="h-[1px] w-4 bg-current" />

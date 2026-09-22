@@ -10,24 +10,24 @@
 
 export const themeTokens = {
   colors: {
-    // Charcoal / near-black immersive foundation
-    bgBase: "#090a0d",
-    bgSurface: "#101216",
-    bgElevated: "#16181f",
-    bgHighlight: "#1e2129",
+    // Light canvas surfaces (Phase 7.5 — ZAPSTACK Light Brand)
+    bgBase: "#ffffff",
+    bgSurface: "#f5f5f5",
+    bgElevated: "#f0f0f0",
+    bgHighlight: "#ebebeb",
 
-    // Off-white and restrained gray typography
-    textPrimary: "#f4f4f6",
-    textSecondary: "#9496a1",
-    textMuted: "#5b5e6b",
+    // Deep black and restrained neutral typography
+    textPrimary: "#202020",
+    textSecondary: "#4a4a4a",
+    textMuted: "#888888",
 
-    // Controlled, restrained monochrome accent
-    accent: "#ffffff",
-    accentMuted: "#272a33",
+    // Structural accents
+    accent: "#202020",
+    accentMuted: "#f5f5f5",
 
-    // Hairline borders
-    borderSubtle: "rgba(255, 255, 255, 0.07)",
-    borderStrong: "rgba(255, 255, 255, 0.14)",
+    // Hairline borders — light
+    borderSubtle: "rgba(0, 0, 0, 0.08)",
+    borderStrong: "rgba(0, 0, 0, 0.16)",
   },
 
   layout: {

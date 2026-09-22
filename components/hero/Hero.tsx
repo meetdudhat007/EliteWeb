@@ -267,29 +267,29 @@ export function Hero() {
     <section
       ref={heroRef}
       id="hero"
-      className="relative flex min-h-[92vh] flex-col justify-center border-b border-white/[0.07] py-16 sm:py-24 lg:py-28 overflow-hidden"
+      className="relative flex min-h-[92vh] flex-col justify-center border-b border-zinc-200 bg-white py-16 sm:py-24 lg:py-28 overflow-hidden"
     >
-      {/* Background Subtle Ambience */}
-      <div className="absolute top-1/4 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
+      {/* Background Subtle Ambient — very light radial on white */}
+      <div className="absolute top-1/4 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(224,160,48,0.04)_0%,transparent_70%)] pointer-events-none" />
 
       <Container size="wide">
         {/* Top Technical Header Strip */}
         <div
           data-hero="top-strip"
-          className="mb-12 flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.07] pb-6"
+          className="mb-12 flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 pb-6"
         >
           <div className="flex items-center gap-3">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-400">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-500">
               [ 01 // STUDIO OVERVIEW ]
             </span>
-            <span className="h-3 w-[1px] bg-white/15" />
-            <div className="inline-flex items-center gap-2 rounded-[2px] border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-zinc-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span className="h-3 w-[1px] bg-zinc-300" />
+            <div className="inline-flex items-center gap-2 rounded-[2px] border border-zinc-300 bg-zinc-100 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-zinc-600">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               <span>{siteConfig.positioning}</span>
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-6 font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+          <div className="hidden sm:flex items-center gap-6 font-mono text-[10px] uppercase tracking-widest text-zinc-400">
             <span>DISCIPLINE: BESPOKE_SYSTEMS</span>
             <span>·</span>
             <span>CAPACITY: 4–5 ENG_CORE</span>
@@ -300,7 +300,7 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Left Column: Monumental Headline & Narrative */}
           <div className="lg:col-span-7">
-            <h1 className="text-4xl font-semibold tracking-[-0.038em] text-white sm:text-6xl md:text-7xl lg:text-[5.4rem] lg:leading-[0.98]">
+            <h1 className="text-4xl font-semibold tracking-[-0.038em] text-[#202020] sm:text-6xl md:text-7xl lg:text-[5.4rem] lg:leading-[0.98]">
               <span data-hero="headline-line" className="inline-block">
                 Software Built
               </span>{" "}
@@ -311,7 +311,7 @@ export function Hero() {
               <br className="hidden sm:inline" />
               <span
                 data-hero="headline-line"
-                className="inline-block text-zinc-200"
+                className="inline-block text-zinc-400"
               >
                 Business.
               </span>
@@ -319,7 +319,7 @@ export function Hero() {
 
             <p
               data-hero="description"
-              className="mt-8 max-w-xl text-base font-normal leading-relaxed text-zinc-400 sm:text-lg"
+              className="mt-8 max-w-xl text-base font-normal leading-relaxed text-zinc-500 sm:text-lg"
             >
               {siteConfig.description}
             </p>
@@ -350,9 +350,9 @@ export function Hero() {
             {/* Technical Sub-annotation */}
             <div
               data-hero="annotation"
-              className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500"
+              className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400"
             >
-              <span className="h-1 w-1 rounded-full bg-zinc-400" />
+              <span className="h-1 w-1 rounded-full bg-[#E0A030]" />
               <span>
                 Tailored engineering architecture · Zero template compromises
               </span>
@@ -369,36 +369,36 @@ export function Hero() {
         </div>
 
         {/* Bottom Technical Metadata Matrix */}
-        <div className="mt-20 grid grid-cols-2 gap-6 border-t border-white/[0.07] pt-8 md:grid-cols-4">
+        <div className="mt-20 grid grid-cols-2 gap-6 border-t border-zinc-200 pt-8 md:grid-cols-4">
           <div data-hero="metadata-col">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               01 // Discipline
             </span>
-            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-zinc-200">
+            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-[#202020]">
               Custom Engineering
             </p>
           </div>
           <div data-hero="metadata-col">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               02 // Focus
             </span>
-            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-zinc-200">
-              Business Systems & Portals
+            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-[#202020]">
+              Business Systems &amp; Portals
             </p>
           </div>
           <div data-hero="metadata-col">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               03 // Execution
             </span>
-            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-zinc-200">
+            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-[#202020]">
               Full Lifecycle Ownership
             </p>
           </div>
           <div data-hero="metadata-col">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               04 // Structure
             </span>
-            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-zinc-200">
+            <p className="mt-1.5 text-xs font-medium uppercase tracking-wider text-[#202020]">
               Senior-Led Core Team
             </p>
           </div>

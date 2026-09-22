@@ -20,17 +20,21 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center font-medium uppercase tracking-wider transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 cursor-pointer disabled:opacity-50 disabled:pointer-events-none select-none";
+    "inline-flex items-center justify-center font-medium uppercase tracking-wider transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0A030]/60 cursor-pointer disabled:opacity-50 disabled:pointer-events-none select-none";
 
   const variantClasses = {
+    // Primary: deep-black background, white text — strongest CTA
     primary:
-      "bg-white text-zinc-950 hover:bg-zinc-200 active:bg-zinc-300 font-semibold",
+      "bg-[#202020] text-white hover:bg-[#000000] active:bg-[#000000] font-semibold",
+    // Secondary: white background, dark border, dark text — clear hierarchy below primary
     secondary:
-      "bg-zinc-900 text-zinc-200 border border-white/10 hover:bg-zinc-800 hover:border-white/20 hover:text-white",
+      "bg-white text-[#202020] border border-zinc-300 hover:border-[#202020] hover:bg-zinc-50",
+    // Outline: transparent with dark border
     outline:
-      "bg-transparent text-zinc-300 border border-white/15 hover:border-white/40 hover:text-white",
+      "bg-transparent text-[#202020] border border-zinc-300 hover:border-[#202020] hover:bg-zinc-50",
+    // Ghost: text-only with subtle underline
     ghost:
-      "bg-transparent text-zinc-400 hover:text-white px-0 py-0 tracking-widest text-xs border-b border-transparent hover:border-white/40",
+      "bg-transparent text-zinc-500 hover:text-[#202020] px-0 py-0 tracking-widest text-xs border-b border-transparent hover:border-zinc-400",
   };
 
   const sizeClasses = {

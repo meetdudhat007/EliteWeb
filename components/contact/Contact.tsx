@@ -92,23 +92,23 @@ export function Contact() {
     <footer
       ref={footerRef}
       id="contact"
-      className="relative bg-[#060709] pt-32 sm:pt-40 lg:pt-48 overflow-hidden"
+      className="relative bg-white pt-32 sm:pt-40 lg:pt-48 overflow-hidden border-t border-zinc-200"
     >
-      {/* Subtle Ambient Glow — ZAPSTACK gold-tinted */}
-      <div className="absolute top-0 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(224,160,48,0.04)_0%,transparent_70%)] pointer-events-none" />
+      {/* Subtle Ambient Glow — ZAPSTACK gold-tinted, visible on white */}
+      <div className="absolute top-0 left-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(224,160,48,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <Container size="wide">
         {/* The Big Conclusion: Massive Typographic Lockup */}
-        <div className="border-b border-white/[0.07] pb-24 lg:pb-32">
+        <div className="border-b border-zinc-200 pb-24 lg:pb-32">
           <div
             data-contact="label"
             className="flex items-center gap-3"
           >
-            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-400">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-zinc-500">
               [ 07 // INITIATE CONVERSATION ]
             </span>
-            <span className="h-3 w-[1px] bg-white/15" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
+            <span className="h-3 w-[1px] bg-zinc-300" />
+            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
               OPEN INQUIRIES
             </span>
           </div>
@@ -119,14 +119,14 @@ export function Contact() {
               className="text-4xl font-semibold tracking-[-0.04em] text-zinc-400 sm:text-6xl md:text-7xl lg:text-[5.5rem] lg:leading-[0.96]"
             >
               {siteConfig.contact.ctaHeading} <br />
-              <span className="text-white font-bold">
+              <span className="text-[#202020] font-bold">
                 {siteConfig.contact.ctaAccent}
               </span>
             </h2>
 
             <p
               data-contact="description"
-              className="mt-8 max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl font-normal"
+              className="mt-8 max-w-2xl text-lg leading-relaxed text-zinc-500 sm:text-xl font-normal"
             >
               {siteConfig.contact.ctaDescription}
             </p>
@@ -148,15 +148,15 @@ export function Contact() {
         </div>
 
         {/* Communication Channels & Operational Details */}
-        <div className="grid grid-cols-1 gap-12 py-16 border-b border-white/[0.07] md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-12 py-16 border-b border-zinc-200 md:grid-cols-3">
           <div data-contact="meta-col">
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               Direct Contact
             </span>
-            <p className="mt-2 text-sm font-medium text-white">
+            <p className="mt-2 text-sm font-medium text-[#202020]">
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="underline underline-offset-4 hover:text-zinc-300"
+                className="underline underline-offset-4 hover:text-[#E0A030] transition-colors"
               >
                 {siteConfig.contact.email}
               </a>
@@ -167,7 +167,7 @@ export function Contact() {
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               Studio Positioning
             </span>
-            <p className="mt-2 text-sm font-medium text-white">
+            <p className="mt-2 text-sm font-medium text-[#202020]">
               {siteConfig.contact.location}
             </p>
           </div>
@@ -176,15 +176,15 @@ export function Contact() {
             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400">
               Operating Hours
             </span>
-            <p className="mt-2 text-sm font-medium text-white">
+            <p className="mt-2 text-sm font-medium text-[#202020]">
               {siteConfig.contact.workingHours}
             </p>
           </div>
         </div>
 
-        {/* Demo Disclaimer Notice */}
-        <div data-contact="disclaimer" className="my-10 rounded-[2px] border border-amber-400/20 bg-amber-500/[0.03] p-4">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-amber-300/80">
+        {/* Demo Disclaimer Notice — kept per Phase 7.5 requirements */}
+        <div data-contact="disclaimer" className="my-10 rounded-[2px] border border-amber-400/30 bg-amber-50 p-4">
+          <p className="font-mono text-[10px] uppercase tracking-wider text-amber-700/80">
             {siteConfig.contact.isDemoNotice}
           </p>
         </div>
@@ -194,7 +194,7 @@ export function Contact() {
           data-contact="footer-bar"
           className="flex flex-col items-center justify-between gap-6 py-10 sm:flex-row"
         >
-          <BrandMark showBadge={false} />
+          <BrandMark />
 
           <div className="flex items-center gap-6">
             {siteConfig.socialLinks.map((social) => (
@@ -203,7 +203,7 @@ export function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 transition-colors hover:text-white"
+                className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 transition-colors hover:text-[#202020]"
               >
                 {social.name}
               </a>

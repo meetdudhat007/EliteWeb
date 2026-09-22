@@ -4,32 +4,31 @@ import { cn } from "@/lib/utils/cn";
 
 interface BrandMarkProps {
   className?: string;
-  showBadge?: boolean;
 }
 
-export function BrandMark({ className, showBadge = true }: BrandMarkProps) {
+/**
+ * ZAPSTACK BrandMark
+ *
+ * ARCHITECTURAL PURPOSE:
+ * Central brand identity component. Renders ZAPSTACK with the gold mark accent.
+ * Logo is intentionally replaceable — final mark is not finalized.
+ * Demo badge has been removed from navigation display per Phase 7.5 requirements.
+ */
+export function BrandMark({ className }: BrandMarkProps) {
   return (
     <a
       href="#hero"
       className={cn(
-        "group inline-flex items-center gap-3 text-white transition-opacity hover:opacity-80",
+        "group inline-flex items-center gap-2 transition-opacity hover:opacity-80",
         className
       )}
       aria-label={`${siteConfig.name} - Home`}
     >
-      <div className="flex items-center gap-2">
-        {/* Brand mark square — ZAPSTACK Luxury Gold accent */}
-        <span className="h-2 w-2 rounded-[1px] bg-[#E0A030] transition-transform duration-300 group-hover:scale-110" />
-        <span className="font-mono text-sm font-semibold tracking-[0.22em] text-white">
-          {siteConfig.name}
-        </span>
-      </div>
-
-      {showBadge && siteConfig.isPrototype && (
-        <span className="rounded-[2px] border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-zinc-400">
-          Demo
-        </span>
-      )}
+      {/* Brand mark square — ZAPSTACK Luxury Gold accent */}
+      <span className="h-2 w-2 rounded-[1px] bg-[#E0A030] transition-transform duration-300 group-hover:scale-110" />
+      <span className="font-mono text-sm font-semibold tracking-[0.22em] text-[#202020]">
+        {siteConfig.name}
+      </span>
     </a>
   );
 }

@@ -1,36 +1,43 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   ZAPSTACK DESIGN SYSTEM
+   ZAPSTACK DESIGN SYSTEM — LIGHT BRAND EDITION (Phase 7.5)
    ==========================================================================
    Color, typography, spacing, and border tokens are defined here as CSS
    custom properties. Update values centrally to propagate changes to all
    components without modifying component code.
 
-   ZAPSTACK brand palette is exposed via --brand-* custom properties.
-   Gold should be used selectively — identity, highlights, active states.
+   ZAPSTACK Light Brand Palette:
+   - Primary canvas:        #FFFFFF
+   - Secondary surface:     #F5F5F5
+   - Deep Black (primary):  #202020
+   - Pure Black:            #000000
+   - Luxury Gold (accent):  #E0A030
+   - Bright Gold (hover):   #E8A838
+
+   Gold is the brand accent, not the website's main color.
    ========================================================================== */
 
 :root {
-  /* Near-Black / Charcoal Visual Art Direction */
-  --bg-base: #090a0d;
-  --bg-surface: #101216;
-  --bg-elevated: #16181f;
-  --bg-highlight: #1e2129;
+  /* Light Canvas Surfaces */
+  --bg-base: #ffffff;
+  --bg-surface: #f5f5f5;
+  --bg-elevated: #f0f0f0;
+  --bg-highlight: #ebebeb;
 
-  /* Off-White & Restrained Gray Typography */
-  --text-primary: #f4f4f6;
-  --text-secondary: #9496a1;
-  --text-muted: #5b5e6b;
+  /* Deep Black & Restrained Neutral Typography */
+  --text-primary: #202020;
+  --text-secondary: #4a4a4a;
+  --text-muted: #888888;
 
-  /* Controlled Monochrome Accent */
-  --accent-primary: #ffffff;
-  --accent-secondary: #272a33;
-  --accent-highlight: rgba(255, 255, 255, 0.08);
+  /* Structural Accent References */
+  --accent-primary: #202020;
+  --accent-secondary: #f5f5f5;
+  --accent-highlight: rgba(32, 32, 32, 0.05);
 
-  /* Hairline Borders */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  /* Hairline Borders — Light */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
 
   /* Geometry & Radii */
   --radius-sm: 2px;
@@ -44,9 +51,13 @@
   --font-editorial-body: clamp(1.125rem, 1.25vw + 0.25rem, 1.375rem);
 
   /* ZAPSTACK Brand Palette */
-  --brand-gold: #E0A030;          /* Luxury Gold — primary brand accent */
-  --brand-gold-bright: #E8A838;   /* Bright Gold — hover / interactive states */
-  --brand-gold-gradient: linear-gradient(135deg, #F2B544 0%, #D89420 100%);
+  --brand-deep-black: #202020;        /* Deep Black — primary typography */
+  --brand-black: #000000;             /* Pure Black — strongest contrast */
+  --brand-gold: #e0a030;              /* Luxury Gold — primary brand accent */
+  --brand-gold-bright: #e8a838;       /* Bright Gold — hover / interactive states */
+  --brand-white: #ffffff;             /* Pure White */
+  --brand-soft-white: #f5f5f5;        /* Soft White — secondary surfaces */
+  --brand-gold-gradient: linear-gradient(135deg, #f2b544 0%, #d89420 100%);
 }
 
 @theme inline {
@@ -65,9 +76,13 @@
   --color-border-subtle: var(--border-subtle);
   --color-border-strong: var(--border-strong);
 
-  /* ZAPSTACK brand gold utilities */
+  /* ZAPSTACK brand color utilities */
+  --color-brand-deep-black: var(--brand-deep-black);
+  --color-brand-black: var(--brand-black);
   --color-brand-gold: var(--brand-gold);
   --color-brand-gold-bright: var(--brand-gold-bright);
+  --color-brand-white: var(--brand-white);
+  --color-brand-soft-white: var(--brand-soft-white);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -122,5 +137,5 @@ p {
 /* Subtle selection styling */
 ::selection {
   background-color: rgba(224, 160, 48, 0.18);
-  color: #ffffff;
+  color: #202020;
 }
