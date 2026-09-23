@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/constants/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { HeroVisual } from "@/components/3d/HeroVisual";
+import { DotField } from "@/components/hero/DotField";
 import { useGSAPAnimation } from "@/hooks/useGSAPAnimation";
 import { gsap } from "@/lib/animations/gsap";
 
@@ -269,10 +270,13 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-[92vh] flex-col justify-center border-b border-zinc-200 bg-white py-16 sm:py-24 lg:py-28 overflow-hidden"
     >
+      {/* ── React Bits DotField Cursor Background Layer (scoped strictly to Hero) ── */}
+      <DotField />
+
       {/* Background Subtle Ambient — very light radial on white */}
       <div className="absolute top-1/4 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(224,160,48,0.04)_0%,transparent_70%)] pointer-events-none" />
 
-      <Container size="wide">
+      <Container size="wide" className="relative z-10">
         {/* Top Technical Header Strip */}
         <div
           data-hero="top-strip"
